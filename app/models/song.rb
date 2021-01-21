@@ -2,11 +2,11 @@ class Song < ActiveRecord::Base
   belongs_to :artist
 
   def artist_name
-    song = Song.new
-    song.save
+self.artist.name
   end
 
   def artist_name=(name)
-    song = Song.create(title:, artist_name:)
+  new_artist = Artist.find_or_create_by(name: name)
+  self.artist = new_artist
   end
 end
